@@ -10,7 +10,7 @@ This is the official release of the Mailchimp Magento Integration module. I have
 ### Installation
 Using Modgit
 
-`modgit add mage-mod-mailchimp-magemonkey-ebizmarts https://github.com/flintdigital/mage-mailchimp-magemonkey-ebizmarts.git`
+`modgit add mage-mod-mailchimp-magemonkey-ebizmarts git@github.com:flintdigital/mage-mod-mailchimp-magemonkey-ebizmarts.git`
 
 ### Usage Instructions
 The usage instructions are located here: http://wiki.ebizmarts.com/magemonkey/installation
