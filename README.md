@@ -1,4 +1,4 @@
-# Magento Magemonkey Mailchimp Integration Module (V 1.1.34)
+# Magento Magemonkey Mailchimp Integration Module (Version 1.2.1)
 
 ## Overview
 This is the official release of the Mailchimp Magento Integration module. I have added this to make deployment work with most development projects. This will need to be followed and updated as need from the Magento Connect Repo. Will update as needed.
