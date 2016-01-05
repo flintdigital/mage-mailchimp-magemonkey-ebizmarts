@@ -8,8 +8,8 @@
  * @author     Ebizmarts Team <info@ebizmarts.com>
  * @license    http://opensource.org/licenses/osl-3.0.php
  */
-class Ebizmarts_MageMonkey_Model_Api
-{
+
+class Ebizmarts_MageMonkey_Model_Api {
 
     /**
      * Api instance
@@ -57,8 +57,7 @@ class Ebizmarts_MageMonkey_Model_Api
      * @param array $args
      * @return void
      */
-    public function __construct($args)
-    {
+    public function __construct($args) {
         $storeId = isset($args['store']) ? $args['store'] : null;
         $apikey = (!isset($args['apikey']) ? Mage::helper('monkey')->getApiKey($storeId) : $args['apikey']);
 
@@ -88,8 +87,7 @@ class Ebizmarts_MageMonkey_Model_Api
      * @param array $args
      * @return mixed
      */
-    public function __call($method, $args = null)
-    {
+    public function __call($method, $args = null) {
         $this->errorCode = null;
         $this->errorMessage = null;
 
@@ -103,8 +101,7 @@ class Ebizmarts_MageMonkey_Model_Api
      * @param array $args OPTIONAL call parameters
      * @return mixed
      */
-    public function call($command, $args)
-    {
+    public function call($command, $args) {
         try {
 
             $cacheKey = $this->_cacheHelper->cacheKey($command, $args, $this->_mcapi->api_key);
@@ -148,7 +145,7 @@ class Ebizmarts_MageMonkey_Model_Api
                 //Clear associated cache for this call, for example clear cache for listsForEmail when executing listUnsubscribe
                 $this->_cacheHelper->clearCache($command, $this->_mcapi);
 
-                return (string)$this->_mcapi->errorMessage;
+                return (string) $this->_mcapi->errorMessage;
             }
 
             if ($cacheKey) {
@@ -174,8 +171,7 @@ class Ebizmarts_MageMonkey_Model_Api
      * @param mixed $data
      * @return void
      */
-    protected function _logApiCall($data)
-    {
+    protected function _logApiCall($data) {
         Mage::helper('monkey')->log($data, 'MageMonkey_ApiCall.log');
     }
 

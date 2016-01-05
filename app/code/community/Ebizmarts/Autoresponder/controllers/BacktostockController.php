@@ -7,6 +7,7 @@
  * @author     Ebizmarts Team <info@ebizmarts.com>
  * @license    http://opensource.org/licenses/osl-3.0.php
  */
+
 class Ebizmarts_Autoresponder_BacktostockController extends Mage_Core_Controller_Front_Action
 {
 
@@ -15,7 +16,7 @@ class Ebizmarts_Autoresponder_BacktostockController extends Mage_Core_Controller
         $params = $this->getRequest()->getParams();
         $redirect = '/';
 
-        if (isset($params['subscriber_email']) && isset($params['product_id'])) {
+        if(isset($params['subscriber_email']) && isset($params['product_id'])) {
 
             $email = $params['subscriber_email'];
             $productId = $params['product_id'];
@@ -23,21 +24,23 @@ class Ebizmarts_Autoresponder_BacktostockController extends Mage_Core_Controller
 
             $stockAlertCollection = Mage::getModel('ebizmarts_autoresponder/backtostockalert')->getCollection();
             $stockAlertCollection
-                ->addFieldToFilter('main_table.product_id', array('eq' => $productId))
-                ->addFieldToFilter('main_table.is_active', array('eq' => 1));
+                ->addFieldToFilter('main_table.product_id', array('eq'=>$productId))
+                ->addFieldToFilter('main_table.is_active', array('eq'=> 1))
+            ;
 
             // Check if we already have this Product ID in alert table, otherwise insert a new one
-            if ($stockAlertCollection->getSize() == 0) {
+            if($stockAlertCollection->getSize() == 0) {
                 $stockAlert = Mage::getModel('ebizmarts_autoresponder/backtostockalert');
                 $stockAlert
                     ->setProductId($productId)
-                    ->setIsActive(1);
+                    ->setIsActive(1)
+                ;
 
                 $stockAlert->save();
 
                 $alertId = $stockAlert->getAlertId();
 
-                Mage::helper('ebizmarts_autoresponder')->log('New Stock Alert for product #' . $productId . ' was saved.');
+                Mage::helper('ebizmarts_autoresponder')->log('New Stock Alert for product #'. $productId . ' was saved.');
 
             } else {
                 // Retrieve existing Stock Alert ID
@@ -48,7 +51,8 @@ class Ebizmarts_Autoresponder_BacktostockController extends Mage_Core_Controller
             $backStock = Mage::getModel('ebizmarts_autoresponder/backtostock');
             $backStock
                 ->setAlertId($alertId)
-                ->setEmail($email);
+                ->setEmail($email)
+            ;
             $backStock->save();
 
 

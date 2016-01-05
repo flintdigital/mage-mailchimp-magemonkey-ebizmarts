@@ -7,7 +7,8 @@
  * @author     Ebizmarts Team <info@ebizmarts.com>
  * @license    http://opensource.org/licenses/osl-3.0.php
  */
-class Ebizmarts_AbandonedCart_Adminhtml_AbandonedmailsController extends Mage_Adminhtml_Controller_Action
+
+class Ebizmarts_AbandonedCart_Adminhtml_AbandonedmailsController  extends Mage_Adminhtml_Controller_Action
 {
     /**
      *
@@ -39,8 +40,8 @@ class Ebizmarts_AbandonedCart_Adminhtml_AbandonedmailsController extends Mage_Ad
      */
     public function exportCsvAction()
     {
-        $fileName = 'orders.csv';
-        $grid = $this->getLayout()->createBlock('ebizmarts_abandonedcart/adminhtml_abandonedmails_grid');
+        $fileName   = 'orders.csv';
+        $grid       = $this->getLayout()->createBlock('ebizmarts_abandonedcart/adminhtml_abandonedmails_grid');
         $this->_prepareDownloadResponse($fileName, $grid->getCsvFile());
     }
 
@@ -49,8 +50,8 @@ class Ebizmarts_AbandonedCart_Adminhtml_AbandonedmailsController extends Mage_Ad
      */
     public function exportExcelAction()
     {
-        $fileName = 'orders.xml';
-        $grid = $this->getLayout()->createBlock('ebizmarts_abandonedcart/adminhtml_abandonedmails_grid');
+        $fileName   = 'orders.xml';
+        $grid       = $this->getLayout()->createBlock('ebizmarts_abandonedcart/adminhtml_abandonedmails_grid');
         $this->_prepareDownloadResponse($fileName, $grid->getExcelFile($fileName));
     }
 
@@ -66,15 +67,4 @@ class Ebizmarts_AbandonedCart_Adminhtml_AbandonedmailsController extends Mage_Ad
     /**
      *
      */
-    protected function _isAllowed() {
-        switch ($this->getRequest()->getActionName()) {
-            case 'index':
-            case 'grid':
-            case 'exportExcel':
-            case 'exportCsv':
-                $acl = 'newsletter/magemonkey/ebizmarts_emails';
-                break;
-        }
-        return Mage::getSingleton('admin/session')->isAllowed($acl);
-    }
 }

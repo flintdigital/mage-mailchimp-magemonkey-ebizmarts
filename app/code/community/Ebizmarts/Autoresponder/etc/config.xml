@@ -10,7 +10,7 @@
 <config>
     <modules>
         <Ebizmarts_Autoresponder>
-            <version>1.1.13</version>
+            <version>1.1.11</version>
         </Ebizmarts_Autoresponder>
     </modules>
     <global>
@@ -159,14 +159,6 @@
                     </mandrill_save_config>
                 </observers>
             </admin_system_config_changed_section_mandrill>
-            <sales_order_save_after>
-                <observers>
-                    <ebizmarts_autoresponder_order_save_after>
-                        <class>ebizmarts_autoresponder/eventObserver</class>
-                        <method>orderSaved</method>
-                    </ebizmarts_autoresponder_order_save_after>
-                </observers>
-            </sales_order_save_after>
         </events>
         <translate>
             <modules>
@@ -212,6 +204,14 @@
                     </ebizmarts_autoresponder_review_product_post_after>
                 </observers>
             </review_product_post_after>
+            <sales_order_save_after>
+                <observers>
+                    <ebizmarts_autoresponder_order_save_after>
+                        <class>ebizmarts_autoresponder/eventObserver</class>
+                        <method>orderSaved</method>
+                    </ebizmarts_autoresponder_order_save_after>
+                </observers>
+            </sales_order_save_after>
         </events>
         <translate>
             <modules>
@@ -236,7 +236,7 @@
             </ebizmarts_autoresponder>
             <ebizmarts_autoresponder_backtostock_cleanup>
                 <schedule>
-                    <cron_expr>0 1 * * *</cron_expr>
+                    <cron_expr>0 0 1 * *</cron_expr>
                 </schedule>
                 <run>
                     <model>ebizmarts_autoresponder/cron::cleanupBackToStock</model>

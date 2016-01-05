@@ -8,12 +8,13 @@
  * @author     Ebizmarts Team <info@ebizmarts.com>
  * @license    http://opensource.org/licenses/osl-3.0.php
  */
+
 class Ebizmarts_MageMonkey_Block_Adminhtml_Ecommerce extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
 
     public function __construct()
     {
-        $this->_blockGroup = 'monkey';
+    	$this->_blockGroup = 'monkey';
         $this->_controller = 'adminhtml_ecommerce';
         $this->_headerText = Mage::helper('monkey')->__('Ecommerce360 Sent Orders');
 
@@ -30,7 +31,7 @@ class Ebizmarts_MageMonkey_Block_Adminhtml_Ecommerce extends Mage_Adminhtml_Bloc
     public function isSingleStoreMode()
     {
         if (!Mage::app()->isSingleStoreMode()) {
-            return false;
+               return false;
         }
         return true;
     }

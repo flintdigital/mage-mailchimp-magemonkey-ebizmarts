@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Author : Ebizmarts <info@ebizmarts.com>
  * Date   : 9/15/14
@@ -7,7 +6,7 @@
  * File   : Asyncsubscribers.php
  * Module : Ebizmarts_MageMonkey
  */
-class Ebizmarts_MageMonkey_Model_Asyncsubscribers extends Mage_Core_Model_Abstract
+class Ebizmarts_MageMonkey_Model_Asyncsubscribers  extends Mage_Core_Model_Abstract
 {
     /**
      * Initialize model

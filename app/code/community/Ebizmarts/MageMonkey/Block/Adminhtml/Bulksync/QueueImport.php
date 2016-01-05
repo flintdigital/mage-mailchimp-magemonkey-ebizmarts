@@ -8,6 +8,7 @@
  * @author     Ebizmarts Team <info@ebizmarts.com>
  * @license    http://opensource.org/licenses/osl-3.0.php
  */
+
 class Ebizmarts_MageMonkey_Block_Adminhtml_Bulksync_QueueImport extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
 
@@ -24,9 +25,9 @@ class Ebizmarts_MageMonkey_Block_Adminhtml_Bulksync_QueueImport extends Mage_Adm
 
     protected function _prepareLayout()
     {
-        $this->setChild('grid',
-            $this->getLayout()->createBlock($this->_blockGroup . '/' . $this->_controller . 'Import_grid',
-                $this->_controller . '.grid')->setSaveParametersInSession(true));
+        $this->setChild( 'grid',
+            $this->getLayout()->createBlock( $this->_blockGroup.'/' . $this->_controller . 'Import_grid',
+            $this->_controller . '.grid')->setSaveParametersInSession(true) );
         return Mage_Adminhtml_Block_Widget_Container::_prepareLayout();
     }
 
@@ -38,7 +39,7 @@ class Ebizmarts_MageMonkey_Block_Adminhtml_Bulksync_QueueImport extends Mage_Adm
     public function isSingleStoreMode()
     {
         if (!Mage::app()->isSingleStoreMode()) {
-            return false;
+               return false;
         }
         return true;
     }

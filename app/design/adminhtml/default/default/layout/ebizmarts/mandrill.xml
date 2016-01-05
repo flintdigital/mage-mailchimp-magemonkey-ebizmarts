@@ -2,9 +2,7 @@
 <layout>
     <adminhtml_system_config_edit>
         <reference name="head">
-            <action method="addCss">
-                <stylesheet>ebizmarts/mandrill/mandrill.css</stylesheet>
-            </action>
+            <action method="addCss"><stylesheet>ebizmarts/mandrill/mandrill.css</stylesheet></action>
         </reference>
     </adminhtml_system_config_edit>
 
@@ -12,9 +10,7 @@
         <reference name="content">
             <block type="ebizmarts_mandrill/adminhtml_users_senders" name="mc_transactionalemail_mandrill">
                 <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
-                    <action method="setUseConfirm">
-                        <params>0</params>
-                    </action>
+                    <action method="setUseConfirm"><params>0</params></action>
                 </block>
             </block>
         </reference>
