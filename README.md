@@ -5,7 +5,7 @@ This is the official release of the Mailchimp Magento Integration module. I have
 
 1. Downloaded from http://www.magentocommerce.com/magento-connect/ebizmarts-magemonkey-official-mailchimp-and-mandrill-extension.html
 2. Current release Version 1.1.34, released on 2015-07-09 15:44:02
-3. Compatible with: 1.4.2, 1.5, 1.6, 1.6.1, 1.6.2.0, 1.7, 1.8, 1.8.1, 1.9
+3. Compatible with: 1.4.2, 1.5, 1.6, 1.6.1, 1.6.2.0, 1.7, 1.8, 1.8.1, 1.9, 1.9.2
 
 ### Installation
 Using Modgit
