@@ -5,12 +5,14 @@
  *
  * @author Ebizmarts Team <info@ebizmarts.com>
  */
-class Ebizmarts_SweetMonkey_Adminhtml_MageMonkeyController extends Mage_Adminhtml_Controller_Action {
+class Ebizmarts_SweetMonkey_Adminhtml_MageMonkeyController extends Mage_Adminhtml_Controller_Action
+{
 
     /**
      * Get merge vars for given list
      */
-    public function varsForListAction() {
+    public function varsForListAction()
+    {
         $listId = $this->getRequest()->getParam('list_id', null);
 
         $mergeVars = array();
@@ -22,20 +24,25 @@ class Ebizmarts_SweetMonkey_Adminhtml_MageMonkeyController extends Mage_Adminhtm
         }
 
         $this->getResponse()->setBody(Zend_Json::encode($mergeVars));
-        return;
     }
 
     /**
      * Add merge vars to list
      */
-    public function varsToListAction() {
+    public function varsToListAction()
+    {
 
         $listId = $this->getRequest()->getPost('list_id', null);
 
         if ($listId) {
 
             $api = Mage::getModel('monkey/api');
-            parse_str($this->getRequest()->getPost('merge_vars'), $mergeVars);
+            $e =explode('&',$this->getRequest()->getPost('merge_vars'));
+            $mergeVars = array();
+            foreach($e as $val) {
+                $m = explode('=',$val);
+                $mergeVars[$m[0]]=$m[1];
+            }
 
             $options = array();
             foreach ($mergeVars as $tag => $name) {
@@ -43,11 +50,10 @@ class Ebizmarts_SweetMonkey_Adminhtml_MageMonkeyController extends Mage_Adminhtm
                 //Date for some fields, format is "MM/DD/YYYY"
                 if ($tag == 'PTSSPENT' || $tag == 'PTSEARN' || $tag == 'PTSEXP') {
                     $options ['field_type'] = 'date';
-                }
-                else {
+                } else {
 
                     //We add a new mergevar for INT points.
-                    if($tag == 'PTS') {
+                    if ($tag == 'PTS') {
                         $options = array('field_type' => 'number');
                         $api->listMergeVarAdd($listId, "POINTS", "Points", $options);
 
@@ -62,7 +68,16 @@ class Ebizmarts_SweetMonkey_Adminhtml_MageMonkeyController extends Mage_Adminhtm
         }
 
         $this->getResponse()->setBody(Zend_Json::encode(array()));
-        return;
+    }
+
+    protected function _isAllowed() {
+        switch ($this->getRequest()->getActionName()) {
+            case 'varsToList':
+            case 'varsForList':
+                $acl = 'system/config/sweetmonkey';
+                break;
+        }
+        return Mage::getSingleton('admin/session')->isAllowed($acl);
     }
 
 }
